@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Subtítulos</title>
+</head>
+<body>
+    <div id="subtitlesDiv">Los subtítulos aparecerán aquí...</div>
+
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script>
+        const socket = io(); // Conectar al servidor Socket.IO
+
+        const subtitlesDiv = document.getElementById('subtitlesDiv');
+
+        socket.on('subtitles', text => {
+            console.log('Subtítulos recibidos:', text); // Verifica si llegan los subtítulos
+            subtitlesDiv.textContent = text; // Mostrar los subtítulos en el div
+        });
+    </script>
+</body>
+</html>
